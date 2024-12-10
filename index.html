@@ -138,33 +138,33 @@
     <span>Jenny El Khazen: <a href="mailto:jpe11@mail.aub.edu">jpe11@mail.aub.edu</a></span>
   </div>
   <script>
-    document.querySelector('form').addEventListener('submit', function (event) {
-      event.preventDefault(); // Prevent default form submission to handle it manually
-      const form = event.target;
-      const formData = new FormData(form);
-      const action = form.getAttribute('action');
+  document.querySelector('form').addEventListener('submit', function (event) {
+  event.preventDefault(); // Prevent default form submission to handle it manually
+  const form = event.target;
+  const formData = new FormData(form);
+  const action = form.getAttribute('action');
 
-      // Send the data to Formspree
-      fetch(action, {
-        method: 'POST',
-        body: formData,
-        headers: {
-          'Accept': 'application/json'
-        }
-      })
-      .then(response => {
-        if (response.ok) {
-          alert('Thank you for your submission!');
-          form.reset(); // Clear the form fields
-        } else {
-          alert('There was an error. Please try again.');
-        }
-      })
-      .catch(error => {
-        console.error('Submission error:', error);
-        alert('There was an error. Please try again.');
-      });
-    });
+  // Send the data to Formspree
+  fetch(action, {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Accept': 'application/json'
+    }
+  })
+  .then(response => {
+    if (response.ok) {
+      window.location.href = 'thank-you.html'; // Redirect to thank-you page
+    } else {
+      alert('Oops! Something went wrong. Please try again.');
+    }
+  })
+  .catch(error => {
+    console.error('Submission error:', error);
+    alert('There was an error. Please try again.');
+  });
+});
+
   </script>
 </body>
 </html>
