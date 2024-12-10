@@ -143,7 +143,7 @@
       const form = event.target;
       const formData = new FormData(form);
       const action = form.getAttribute('action');
-
+    
       // Send the data to Formspree
       fetch(action, {
         method: 'POST',
@@ -154,8 +154,7 @@
       })
       .then(response => {
         if (response.ok) {
-          alert('Thank you for your submission!');
-          form.reset(); // Clear the form fields
+          window.location.href = 'thank-you.html'; // Redirect to thank-you page
         } else {
           alert('There was an error. Please try again.');
         }
@@ -164,7 +163,8 @@
         console.error('Submission error:', error);
         alert('There was an error. Please try again.');
       });
-    });
+    });  
+
   </script>
 </body>
 </html>
